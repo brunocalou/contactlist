@@ -1,0 +1,159 @@
+body, html {
+  width: 100%;
+}
+
+#tel-list-section {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#tel-list-section {
+  width: 100%;
+  max-width: 30em;
+  min-width: 20em;
+}
+
+#tel-list {
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+  text-align: left;
+}
+
+#tel-list .list-group-item {
+  margin-bottom: 0.5em;
+}
+
+#tel-list .list-group-item:not(.tel-list-separator) {
+  cursor: pointer;
+}
+
+#tel-list .list-group-item:hover:not(.tel-list-separator) {
+  border: 1px solid #c1c1c1;
+}
+
+#tel-list a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.list-group-item div {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input {
+  height: 3em;
+  border: 1px solid #DDD;
+  padding-left: 1em;
+  width: 100%;
+}
+
+.tel-list-number,
+.tel-list-separator {
+  color: #838181;
+}
+
+.profile {
+  width: 5em;
+  height: 5em;
+}
+
+.tel-list-separator {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 0;
+  margin-top: 1em!important;
+  margin-bottom: 1em!important;
+}
+
+.tel-list-separator * {
+  margin-bottom: 0;
+}
+
+/*animations*/
+.view-animate.ng-enter,
+.view-animate.ng-leave,
+.action-btn {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s;
+}
+.action-btn {
+  transition-duration: .2s;
+}
+
+.view-animate.ng-enter,
+.view-animate.ng-leave {
+  display:block;
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  bottom:0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.view-animate.ng-enter .action-btn {
+  bottom: -20em;
+}
+
+.view-animate.ng-leave .action-btn {
+  bottom: -10em;
+}
+
+.view-animate.ng-enter.ng-enter-active {
+  top: 0;
+}
+
+/*.dropup .action-btn {
+  z-index: 1;
+}*/
+
+.contact-edit {
+  /*height: 100%;*/
+  text-align: center;
+}
+
+#contact-edit-info {
+  text-align: left;
+}
+
+#contact-edit-info label {
+  margin-top: 1em;
+  margin-bottom: 0.4em;
+}
+
+.contact-edit img{
+  width: 40%;
+  max-width: 7em;
+  min-width: 5em;
+  height: auto;
+  object-fit: cover;
+}
+
+.contact-edit input {
+  display: inline-block;
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload * {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  #tel-list-section {
+    width: 90%;
+    min-width: 10em;
+  }
+}

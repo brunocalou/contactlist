@@ -1,0 +1,58 @@
+.action-btn {
+  position: fixed;
+  bottom: 1em;
+  left: auto;
+  right: 1em;
+  border-radius: 100%!important;
+  width: 4em;
+  height: 4em;
+  outline: none;
+  z-index: 1;
+  box-shadow: 0px 1px 1.5px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.24);
+}
+
+.action-btn:active,
+.action-btn:focus {
+  outline: 0!important;
+}
+
+.action-btn-options {
+  bottom: calc(100% - 5px)!important;
+}
+
+.action-btn-options {
+  min-width: 0;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  text-align: center;
+}
+
+.action-btn-options > * {
+  display: block;
+  text-align: left;
+  margin-bottom: 1em;
+}
+
+.action-btn-options .action-btn {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+@media (min-width: 979px) {
+  .dropup:hover > .action-btn-options,
+  .action-btn-options:hover{
+      display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .action-btn {
+    left: auto;
+    right: 1em;
+  }
+}

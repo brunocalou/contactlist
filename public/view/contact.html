@@ -1,0 +1,41 @@
+<div class="list-group-item contact-edit">
+  <!-- <img alt="" class="img-rounded profile" src="/img/profile.png"/> -->
+  <div class="image-upload">
+    <label for="file-input">
+        <img src="/img/profile.png"/>
+    </label>
+
+    <input id="file-input" type="file"/>
+  </div>
+  <div id="contact-edit-info">
+    <label for="name" class="control-label">Name</label>
+    <input id="name" type="text" name="name" value="" ng-model="contact.name">
+    <label for="tel" class="">Tel</label>
+    <input id="tel" type="text" name="tel" value="" ng-model="contact.tel">
+  </div>
+</div>
+
+<div class="dropup action-btn">
+  <button class="btn btn-default btn-danger action-btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span aria-hidden="true" class="glyphicon glyphicon-pencil"/>
+  </button>
+  <div class="dropdown-menu action-btn-options" aria-labelledby="dropdownMenu2">
+    <a href="/" ng-click="save()">
+      <button class="btn btn-default btn-danger action-btn" type="button">
+        <span aria-hidden="true" class="glyphicon glyphicon-ok"/>
+      </button>
+    </a>
+    <a href="/">
+      <button class="btn btn-default btn-danger action-btn" type="button"
+      ng-click="cancel()">
+        <span aria-hidden="true" class="glyphicon glyphicon-remove"/>
+      </button>
+    </a>
+    <a href="/">
+      <button class="btn btn-default btn-danger action-btn" type="button"
+      ng-click="delete()">
+        <span aria-hidden="true" class="glyphicon glyphicon-trash"/>
+      </button>
+    </a>
+  </div>
+</div>

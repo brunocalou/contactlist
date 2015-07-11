@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="contactList">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, target-densitydpi=device-mdpi" />
+  <title>Lista Telefônica</title>
+
+  <link rel="stylesheet" href="/lib/bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <script src="/lib/bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+  <script src="/lib/bower_components/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+
+  <script src="/lib/bower_components/angular/angular.min.js" charset="utf-8"></script>
+  <script src="/lib/bower_components/angular-route/angular-route.js"></script>
+  <script src="/lib/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/js/app.js" charset="utf-8"></script>
+  <script src="/js/config/routes.js" charset="utf-8"></script>
+  <script src="/js/controllers/contactListCtrl.js" charset="utf-8"></script>
+  <script src="/js/controllers/contactCtrl.js" charset="utf-8"></script>
+  <script src="/js/services/contactAPI.js" charset="utf-8"></script>
+   <script src="js/config/config.js" charset="utf-8"></script>
+
+  <link rel="stylesheet" href="/css/stylesheet.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/css/action-btn.css" media="screen" title="no title" charset="utf-8">
+
+  <base href="/">
+</head>
+
+<body ng-controller="contactListCtrl">
+  <!-- ng-view -->
+  <section  ng-view id="tel-list-section" class="view-animate">
+    <!-- <div class="" ng-include="'/view/contact.html'"></div> -->
+  </section>
+</body>
+
+</html>
