@@ -1,9 +1,8 @@
 angular.module("contactList")
-.controller("contactCtrl", function($scope, $routeParams, contactAPI) {
+.controller("contactCtrl", function($scope, $routeParams, $location, contactAPI, contact) {
   $scope.params = $routeParams;
 
-  $scope.contact = angular.copy(contactAPI.current_contact);
-  // $scope.contact.id = $routeParams;
+  $scope.contact = contact;
 
   //MUST SAVE THE RECEIVED CONTACT ON THE CONTACT VARIABLE (BECAUSE
   //WE DONT HAVE THE CONTACT ID)
@@ -16,16 +15,18 @@ angular.module("contactList")
       console.log("Save new");
       contactAPI.addContact($scope.contact);
     }
+    $location.path("/");
     console.log($scope.contact);
   };
 
   $scope.cancel = function() {
     console.log("Cancel");
+    $location.path("/");
   };
 
   $scope.delete = function() {
     console.log("Delete");
     contactAPI.deleteContact($scope.contact);
-    // console.log($scope.contact);
+    $location.path("/");
   };
 });

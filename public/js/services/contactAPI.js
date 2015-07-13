@@ -29,31 +29,39 @@ angular.module('contactList').service('contactAPI', function($http, config) {
 
   this.current_contact = {};
 
+  this.setCurrentContact = function(id) {
+    for (var i = 0; i < contacts.length; i++) {
+      if (contacts[i].id == id) {
+        this.current_contact = contacts[i];
+        break;
+      }
+    }
+  };
+
   this.getLocalContacts = function() {
     return contacts;
   };
 
   this.getContacts = function() {
-    var response = $http.get(config.baseURL + '/contacts/');
-    response.success(function(data, status) {
-      if (status == 200) {
-        contacts = data;
-      }
-    });
-    return response;
+    // var response = $http.get(config.baseURL + '/contacts/');
+    // response.success(function(data, status) {
+    //   if (status == 200) {
+    //     contacts = data;
+    //   }
+    // });
+    // return response;
   };
 
   this.getContact = function(contact) {
-    return $http.get(config.baseURL + '/contacts/' + contact.id);
+    // return $http.get(config.baseURL + '/contacts/' + contact.id);
   };
 
   this.addContact = function(contact) {
     // var response = $http.post(config.baseURL + '/contacts/', contact);
     // response.success(function(data, status) {
       // if (status == 200) {
-      console.log(contact);
       contact.img = "/img/profile.png";
-      contact.id = Math.random() * 100 + 10;
+      contact.id = Math.floor(Math.random() * 100 + 10);
         contacts.push(contact);
       // }
     // });

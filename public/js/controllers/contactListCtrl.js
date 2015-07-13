@@ -1,7 +1,7 @@
 angular.module('contactList')
-  .controller('contactListCtrl', function($scope, contactAPI) {
+  .controller('contactListCtrl', function($scope, $location, contacts) {
 
-    $scope.contacts = contactAPI.getLocalContacts();
+    $scope.contacts = contacts;
 
     //Holds the last first character used on the contact list
     $scope.separator = '';
@@ -14,9 +14,11 @@ angular.module('contactList')
       return false;
     };
 
-    $scope.setCurrentContact = function(contact) {
-      contactAPI.current_contact = contact;
+    $scope.editContact = function(contact) {
+      $location.path("/contact/" + contact.id);
     };
 
-    console.log(contactAPI.current_contact);
+    $scope.addContact = function() {
+      $location.path("/contact/");
+    };
   });

@@ -5,20 +5,16 @@
     <div class="list-group-item tel-list-separator" ng-if="validateSeparator(contact.name)">
       <h4>{{separator}}</h4>
     </div>
-    <a href="/contact/{{contact.id}}" ng-click="setCurrentContact(contact)">
-      <div class="list-group-item">
+      <div ng-click="editContact(contact)" class="list-group-item">
         <img alt="" class="img-rounded profile" ng-src="{{contact.img}}"/>
         <div>
           <h4>{{contact.name}}</h4>
           <h5 class="tel-list-number">{{contact.tel}}</h5>
         </div>
       </div>
-    </a>
   </li>
 </ul>
-<a href="/contact">
-  <button class="btn btn-default btn-danger add-btn action-btn" type="button"
-  ng-click="setCurrentContact({})">
-    <span aria-hidden="true" class="glyphicon glyphicon-plus"/>
-  </button>
-</a>
+
+<button ng-click="addContact()" class="btn btn-default btn-danger add-btn action-btn" type="button">
+  <span aria-hidden="true" class="glyphicon glyphicon-plus"/>
+</button>
