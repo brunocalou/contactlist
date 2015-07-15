@@ -25,7 +25,9 @@ angular.module('contactList')
     controller: 'contactCtrl',
     resolve: {
       contact: function() {
-        return {};
+        return {
+          'img': '/img/profile.png'
+        };
       }
     }
   }).otherwise({

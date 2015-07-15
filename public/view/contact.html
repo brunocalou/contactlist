@@ -1,17 +1,45 @@
 <div class="list-group-item contact-edit">
+
+ <div ng-show="show_errors" id="name-errors" class="">
+   <div ng-show="contactform.name.$error.required" class="alert alert-danger" role="alert">
+     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+     <span class="sr-only">Error:</span>
+     <span>Name cannot be empty!</span>
+   </div>
+   <div ng-show="contactform.name.$error.minlength" class="alert alert-danger" role="alert">
+     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+     <span class="sr-only">Error:</span>
+     <span>Name is too short!</span>
+   </div>
+ </div>
+ <div ng-show="show_errors" id="name-errors" class="">
+   <div ng-show="contactform.tel.$error.required" class="alert alert-danger" role="alert">
+     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+     <span class="sr-only">Error:</span>
+     <span>Telephone cannot be empty!</span>
+   </div>
+   <div ng-show="contactform.tel.$error.minlength" class="alert alert-danger" role="alert">
+     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+     <span class="sr-only">Error:</span>
+     <span>Telephone is too short!</span>
+   </div>
+ </div>
+
+
   <div class="image-upload">
     <label for="file-input">
-      <img src="/img/profile.png"/>
+      <img class="img-rounded profile" ng-src="{{contact.img}}"/>
     </label>
-    <input id="file-input" type="file"/>
+    <input id="file-input" type="file" onchange="angular.element(this).scope().updateImage(this.files)"/>
   </div>
-  <div id="contact-edit-info">
+
+  <form id="contact-edit-info" name="contactform">
     <label class="control-label" for="name">Name</label>
-    <input id="name" name="name" ng-model="contact.name" type="text" value="">
+    <input id="name" name="name" ng-model="contact.name" type="text" value="" required ng-minlength="3">
     <label class="" for="tel">Tel</label>
-    <input id="tel" name="tel" ng-model="contact.tel" type="text" value="">
+    <input id="tel" name="tel" ng-model="contact.tel" type="text" value="" required ng-minlength="9">
   </div>
-</div>
+</form>
 
 <div class="dropup action-btn">
   <button aria-expanded="false" aria-haspopup="true" class="btn btn-default btn-danger action-btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu2" type="button">
@@ -24,7 +52,7 @@
     <button class="btn btn-default btn-danger action-btn" ng-click="cancel()" type="button">
       <span aria-hidden="true" class="glyphicon glyphicon-remove"/>
     </button>
-    <button class="btn btn-default btn-danger action-btn" ng-click="delete()" type="button">
+    <button class="btn btn-default btn-danger action-btn" ng-click="delete()" ng-disabled="!contact.id" type="button">
       <span aria-hidden="true" class="glyphicon glyphicon-trash"/>
     </button>
   </div>

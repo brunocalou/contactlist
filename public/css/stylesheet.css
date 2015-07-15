@@ -41,6 +41,12 @@ body, html {
   text-decoration: none;
 }
 
+.contact-edit .alert,
+#name-errors {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
 .list-group-item div {
   margin-left: 1em;
   display: inline-block;
@@ -62,6 +68,7 @@ input {
 .profile {
   width: 5em;
   height: 5em;
+  border-radius: 100%;
 }
 
 .tel-list-separator {
@@ -78,10 +85,11 @@ input {
 }
 
 /*animations*/
-.view-animate.ng-enter,
-.view-animate.ng-leave,
+
+.view-animate,
 .action-btn {
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s;
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s;
 }
 .action-btn {
@@ -89,7 +97,9 @@ input {
 }
 
 .view-animate.ng-enter,
-.view-animate.ng-leave {
+.view-animate.ng-leave,
+.view-animate.ng-enter.ng-enter-active,
+.view-animate.ng-leave.ng-leave-active {
   display:block;
   position:absolute;
   top:100%;
@@ -100,6 +110,21 @@ input {
   z-index: 0;
 }
 
+.view-animate.ng-enter {
+  opacity:0;
+}
+.view-animate.ng-enter.ng-enter-active {
+  top: 0;
+  opacity: 1;
+}
+
+.view-animate.ng-leave {
+  opacity:1;
+}
+.view-animate.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
 .view-animate.ng-enter .action-btn {
   bottom: -20em;
 }
@@ -108,16 +133,7 @@ input {
   bottom: -10em;
 }
 
-.view-animate.ng-enter.ng-enter-active {
-  top: 0;
-}
-
-/*.dropup .action-btn {
-  z-index: 1;
-}*/
-
 .contact-edit {
-  /*height: 100%;*/
   text-align: center;
 }
 
@@ -134,8 +150,6 @@ input {
   width: 40%;
   max-width: 7em;
   min-width: 5em;
-  height: auto;
-  object-fit: cover;
 }
 
 .contact-edit input {
