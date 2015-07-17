@@ -1,0 +1,7 @@
+{"_id":{"$oid":"55a949432123a30c0e9cb570"},"img":"/img/samples/black_widow.jpg","name":"Black Widow","tel":"99999-9999"}
+{"_id":{"$oid":"55a949432123a30c0e9cb571"},"img":"/img/samples/captain_america.jpg","name":"Captain America","tel":"99999-9988"}
+{"_id":{"$oid":"55a949432123a30c0e9cb572"},"img":"/img/samples/hawk_eye.jpg","name":"Hawk Eye","tel":"99999-9977"}
+{"_id":{"$oid":"55a949432123a30c0e9cb573"},"img":"/img/samples/hulk.jpg","name":"Hulk","tel":"99999-9966"}
+{"_id":{"$oid":"55a949432123a30c0e9cb574"},"img":"/img/samples/iron_man.jpg","name":"Iron Man","tel":"99999-9955"}
+{"_id":{"$oid":"55a949432123a30c0e9cb575"},"img":"/img/samples/nick_fury.jpg","name":"Nick Fury","tel":"99999-9944"}
+{"_id":{"$oid":"55a949432123a30c0e9cb576"},"img":"/img/samples/thor.jpg","name":"Thor","tel":"99999-9933"}
