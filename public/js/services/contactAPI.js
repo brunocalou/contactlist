@@ -1,112 +1,92 @@
-angular.module('contactList').service('contactAPI', function($http, config) {
-  var contacts = [{
-    'id': '0',
-    'name': 'Alves',
-    'tel': '992056272',
-    'img': '/img/profile.png'
-  }, {
-    'id': '1',
-    'name': 'Bruno Calou',
-    'tel': '24256214',
-    'img': '/img/profile.png'
-  }, {
-    'id': '2',
-    'name': 'Bruno Alves',
-    'tel': '992094993',
-    'img': '/img/profile.png'
-  }, {
-    'id': '3',
-    'name': 'Calou',
-    'tel': '992056121',
-    'img': '/img/profile.png'
-  }, {
-    'id': '4',
-    'name': 'Mayara',
-    'tel': '992094993',
-    'img': '/img/profile.png'
-  }];
-
+angular.module('contactList').service('contactAPI', function ($http, config, $filter) {
+  var
+    contacts = [],
+    loadedContacts = false,
+    i = 0;
 
   this.current_contact = {};
 
-  this.setCurrentContact = function(id) {
-    for (var i = 0; i < contacts.length; i++) {
-      if (contacts[i].id == id) {
+  this.setCurrentContact = function (id) {
+    for (i = 0; i < contacts.length; i += 1) {
+      if (contacts[i]._id === id) {
         this.current_contact = contacts[i];
         break;
       }
     }
   };
 
-  this.getLocalContacts = function() {
+  this.loadedContacts = function () {
+    return loadedContacts;
+  };
+
+  this.getLocalContacts = function () {
     return contacts;
   };
 
-  this.getContacts = function() {
-    // var response = $http.get(config.baseURL + '/contacts/');
-    // response.success(function(data, status) {
-    //   if (status == 200) {
-    //     contacts = data;
-    //   }
-    // });
-    // return response;
+  this.getContacts = function () {
+    var response = $http.get(config.baseURL + '/contacts/');
+    response.success(function (data, status) {
+      if (status == 200) {
+        //        contacts = data;
+        contacts = $filter('orderBy')(data, 'name');
+        loadedContacts = true;
+      }
+    });
+    return response;
   };
 
-  this.getContact = function(contact) {
-    // return $http.get(config.baseURL + '/contacts/' + contact.id);
+  this.getContact = function (contact) {
+    return $http.get(config.baseURL + '/contacts/' + contact._id);
   };
 
-  this.addContact = function(contact) {
-    // var response = $http.post(config.baseURL + '/contacts/', contact);
-    // response.success(function(data, status) {
-      // if (status == 200) {
-      contact.img = "/img/profile.png";
-      contact.id = Math.floor(Math.random() * 100 + 10);
+  this.addContact = function (contact) {
+    var response = $http.post(config.baseURL + '/contacts/', contact);
+    response.success(function (data, status) {
+      if (status == 200) {
+        contact._id = data._id;
         contacts.push(contact);
-      // }
-    // });
-    // return response;
+        contacts = $filter('orderBy')(contacts, 'name');
+      }
+    });
+    return response;
   };
 
-  this.updateContact = function(contact) {
-    // var response = $http.put(config.baseURL + '/contacts/' + contact.id, contact);
-    // response.success(function(data, status) {
-    //   if (status == 200) {
-        //If it was ok, add the book the the list
-        // $scope.books.push(response.data);
-        for (var i = 0; i < contacts.length; i++) {
-          if (contacts[i].id == contact.id) {
+  this.updateContact = function (contact) {
+    var response = $http.put(config.baseURL + '/contacts/' + contact._id, contact);
+    response.success(function (data, status) {
+      if (status == 200) {
+        //        If it was ok, add the contact the the list
+        for (i = 0; i < contacts.length; i++) {
+          if (contacts[i]._id == contact._id) {
             contacts[i] = contact;
+            contacts = $filter('orderBy')(contacts, 'name');
             break;
           }
         }
-    //   }
-    // });
-    // return response;
+      }
+    });
+    return response;
   };
 
-  this.deleteContact = function(contact) {
-    ///////////////////////////////////////////
-    //  MUST IMPLEMENT THE ERROR ON THE SERVER
-    ///////////////////////////////////////////
+  this.deleteContact = function (contact) {
+    var response = $http.delete(config.baseURL + '/contacts/' + contact._id);
+    response.success(function (data, status) {
+      if (status == 200) {
+        if (!data.error) {
 
-    // var response = $http.delete(config.baseURL + '/contacts/' + contact.id);
-    // response.success(function(data, status) {
-    //   if (status == 200) {
-    //     if (!data.error) {
-
-            for (var i = 0; i < contacts.length; i++) {
-              if (contacts[i].id == contact.id) {
-                contacts.splice(i, 1);
-                break;
-              }
+          for (i = 0; i < contacts.length; i++) {
+            if (contacts[i]._id == contact._id) {
+              contacts.splice(i, 1);
+              contacts = $filter('orderBy')(contacts, 'name');
+              break;
             }
-    //     }
-    //   }
-    // });
-    // return response;
+          }
+        }
+      }
+    });
+    return response;
   };
 
   //Get all the contacts
-  this.getContacts();
+//  this.getContacts();
 });

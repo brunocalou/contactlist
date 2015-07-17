@@ -1,20 +1,22 @@
 <input class="" id="tel-list-search" name="search" ng-model="search" placeholder="Search contact..." type="text" value="">
 
 <ul class="list-group" id="tel-list">
-  <li ng-repeat="contact in contacts | orderBy:'name' | filter:search">
+  <li ng-repeat="contact in contacts | filter:search">
     <div class="list-group-item tel-list-separator" ng-if="validateSeparator(contact.name)">
       <h4>{{separator}}</h4>
     </div>
-      <div ng-click="editContact(contact)" class="list-group-item">
-        <img alt="" class="img-rounded profile" ng-src="{{contact.img}}"/>
-        <div>
-          <h4>{{contact.name}}</h4>
-          <h5 class="tel-list-number">{{contact.tel}}</h5>
-        </div>
+    <div ng-click="editContact(contact)" class="list-group-item">
+      <img alt="" class="img-rounded profile" ng-src="{{contact.img}}" />
+      <div>
+        <h4>{{contact.name}}</h4>
+        <h5 class="tel-list-number">{{contact.tel}}</h5>
       </div>
+    </div>
   </li>
 </ul>
 
+<button ng-hide="validateLoadingButton()" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+
 <button ng-click="addContact()" class="btn btn-default btn-danger add-btn action-btn" type="button">
-  <span aria-hidden="true" class="glyphicon glyphicon-plus"/>
+  <span aria-hidden="true" class="glyphicon glyphicon-plus" />
 </button>
