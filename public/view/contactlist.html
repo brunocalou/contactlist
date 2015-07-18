@@ -1,15 +1,15 @@
 <input class="" id="tel-list-search" name="search" ng-model="search" placeholder="Search contact..." type="text" value="">
 
 <ul class="list-group" id="tel-list">
-  <li ng-repeat="contact in contacts | filter:search">
+  <li ng-repeat="contact in contacts | filter:{'name': search}">
     <div class="list-group-item tel-list-separator" ng-if="validateSeparator(contact.name)">
-      <h4>{{separator}}</h4>
+      <h4>{{::separator}}</h4>
     </div>
     <div ng-click="editContact(contact)" class="list-group-item">
-      <img alt="" class="img-rounded profile" ng-src="{{contact.img}}" />
+      <img alt="" class="img-rounded profile" ng-src="{{::contact.img}}" />
       <div>
-        <h4>{{contact.name}}</h4>
-        <h5 class="tel-list-number">{{contact.tel}}</h5>
+        <h4>{{::contact.name}}</h4>
+        <h5 class="tel-list-number">{{::contact.tel}}</h5>
       </div>
     </div>
   </li>
