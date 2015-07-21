@@ -1,6 +1,8 @@
 # contactlist
 Contact List application for the Advanced Programming class at UFRJ
 
+![contactlist](https://cloud.githubusercontent.com/assets/5948318/8790080/dc1bc152-2f1f-11e5-9a4f-a0009fc0fe27.png)
+
 It's hosted at https://pacontactlist.herokuapp.com/
 
 ## Build and run
