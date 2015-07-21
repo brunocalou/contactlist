@@ -41,6 +41,11 @@ body, html {
   text-decoration: none;
 }
 
+.contact-edit > div {
+  display: block;
+  width: 100%;
+}
+
 .contact-edit .alert,
 #name-errors {
   display: block;
@@ -48,7 +53,6 @@ body, html {
 }
 
 .list-group-item div {
-  margin-left: 1em;
   display: inline-block;
   vertical-align: middle;
 }
@@ -89,10 +93,10 @@ input {
 .view-animate,
 .action-btn {
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s;
-  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s;
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .4s;
 }
 .action-btn {
+  -webkit-transition-duration: .2s;
   transition-duration: .2s;
 }
 
